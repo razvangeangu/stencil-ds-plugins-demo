@@ -1,4 +1,5 @@
-import { h, Component, Event, EventEmitter, Prop } from "@stencil/core";
+import { h, Component, Event, EventEmitter, Prop } from '@stencil/core';
+import { serviceDemo } from 'services-library';
 
 export interface SlideValue {
   value: number;
@@ -11,7 +12,7 @@ export interface AdvancedType {
 }
 
 @Component({
-  tag: "demo-component",
+  tag: 'demo-component',
   shadow: true,
   styles: `
     :host {
@@ -20,7 +21,7 @@ export interface AdvancedType {
     input {
       padding: 10px;
     }
-  `
+  `,
 })
 export class Slide {
   @Event() slideChanged!: EventEmitter<SlideValue>;
@@ -31,24 +32,18 @@ export class Slide {
 
   @Prop() advanced: AdvancedType = null;
 
-  @Prop({ mutable: true }) value?: string | null = "";
+  @Prop({ mutable: true }) value?: string | null = '';
 
   changeOccurred = (e: Event) => {
     this.value = (e.currentTarget as HTMLInputElement).value;
     this.slideChanged.emit({
-      value: parseInt(this.value, 10)
+      value: parseInt(this.value, 10),
     });
   };
 
   render() {
-    return (
-      <input
-        type="range"
-        name="points"
-        min={this.min}
-        max={this.max}
-        onChange={this.changeOccurred}
-      />
-    );
+    console.log(serviceDemo);
+
+    return <input type="range" name="points" min={this.min} max={this.max} onChange={this.changeOccurred} />;
   }
 }

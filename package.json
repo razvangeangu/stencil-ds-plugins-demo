@@ -3,5 +3,8 @@
   "private": true,
   "devDependencies": {
     "lerna": "^3.13.1"
+  },
+  "scripts": {
+    "dev": "lerna --scope '{services-library,component-library}' run --parallel start"
   }
 }

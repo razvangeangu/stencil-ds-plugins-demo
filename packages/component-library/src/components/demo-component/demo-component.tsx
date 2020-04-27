@@ -42,7 +42,7 @@ export class Slide {
   };
 
   render() {
-    console.log(serviceDemo);
+    serviceDemo();
 
     return <input type="range" name="points" min={this.min} max={this.max} onChange={this.changeOccurred} />;
   }
